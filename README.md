@@ -10,7 +10,7 @@ All work governed by [`governing-document.md`](./governing-document.md). Current
 
 ## Lab Environment
 
-- **Vought-VM** — Ubuntu Server 25.04, Oracle VirtualBox on Asus M16 (2023). Remote access via Tailscale + SSH.
+- **V*****-VM** — Ubuntu Server 25.04, Oracle VirtualBox on Asus M16 (2023). Remote access via Tailscale + SSH.
 - **Dedicated lab host (planned ~Module 5)** — Used SFF desktop running Proxmox, network-segmented from home.
 
 ## Progress

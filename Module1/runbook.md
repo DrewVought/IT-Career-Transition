@@ -1,6 +1,6 @@
 # Tier 1 Runbook — System Basics (Linux Foundations)
 
-**Environment:** Vought-VM (Ubuntu Server 25.04), Oracle VirtualBox on Asus M16 (2023). NAT networking + Tailscale overlay.
+**Environment:** V*****-VM (Ubuntu Server 25.04), Oracle VirtualBox on Asus M16 (2023). NAT networking + Tailscale overlay.
 **Source logs:** `tier1_session01.log`, `tier1_session02.log`
 
 This runbook documents how to reproduce the environment state built during Tier 1.
@@ -12,7 +12,7 @@ This runbook documents how to reproduce the environment state built during Tier 
 No persistent build artifact — demonstrated through live navigation:
 
 ```bash
-cd /home/dvadmin/users      # absolute path
+cd /home/admin/users      # absolute path
 cd ..                       # relative, one level up
 cd ..                       # relative, another level up
 cd                           # bare cd — returns to invoking user's home
@@ -42,8 +42,8 @@ Verify with: `id Management`, `id Grunt`
 
 **Restricted directory (ACL approach):**
 ```bash
-sudo setfacl -m g:Executives:rwx /home/dvadmin/users
-sudo setfacl -m g:Executives:--x /home/dvadmin      # required for traversal — see troubleshooting notes
+sudo setfacl -m g:Executives:rwx /home/admin/users
+sudo setfacl -m g:Executives:--x /home/admin      # required for traversal — see troubleshooting notes
 ```
 Verify with: `getfacl /home/dvadmin/users`
 
@@ -76,7 +76,7 @@ ip route        # show routing table / identify default gateway
 ping -c 4 google.com   # test reachability + implicit DNS resolution
 ```
 
-**Observed on Vought-VM:**
-- `enp0s3`: `10.0.2.15/24` (VM's own NAT address)
-- `tailscale0`: `100.90.37.50/32` (Tailscale overlay)
-- Default gateway: `10.0.2.2` via `enp0s3`
+**Observed on V*****-VM:**
+- `enp0s3`: `<VM_IP>/24` (VM's own NAT address)
+- `tailscale0`: `<TAILSCALE_IP>/32` (Tailscale overlay)
+- Default gateway: `<GATEWAY_IP>` via `enp0s3`

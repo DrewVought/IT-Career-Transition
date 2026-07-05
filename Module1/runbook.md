@@ -45,7 +45,7 @@ Verify with: `id Management`, `id Grunt`
 sudo setfacl -m g:Executives:rwx /home/admin/users
 sudo setfacl -m g:Executives:--x /home/admin      # required for traversal — see troubleshooting notes
 ```
-Verify with: `getfacl /home/dvadmin/users`
+Verify with: `getfacl /home/admin/users`
 
 **Restricted directory (chmod/chown approach):**
 ```bash
@@ -53,7 +53,7 @@ mkdir No_Grunts
 sudo chown :Executives No_Grunts
 sudo chmod 770 No_Grunts
 ```
-Verify with: `ls -ld No_Grunts` → `drwxrwx--- dvadmin Executives`
+Verify with: `ls -ld No_Grunts` → `drwxrwx--- admin Executives`
 
 ## 3. Shell Environment
 

@@ -1,6 +1,6 @@
 # IT Career Transition Project — Governing Document
 
-**Version:** 3 (June 29, 2026)
+**Version:** 5 (July 5, 2026)
 **Status:** This is the single source of truth for the project. Hand this file (plus `PROGRESS.md`) to any new assistant session before continuing work — the assistant will not remember prior conversations.
 
 ---
@@ -10,10 +10,6 @@
 Transition from paramedic/EMS into a professional IT role through structured, practical, documentation-driven learning. The objective is not certifications — it's building real operational competence, with a portfolio of logs and documentation that can support a resume and GitHub presence.
 
 **Timeline:** Mid-to-late fall 2027 is a personal goal and planning target, not a deadline or a hard requirement. Current EMS employment continues until an actual job offer is in hand and the decision to transition is made. Completing all modules signals readiness to begin the active job search — not a requirement to leave immediately.
-
-**Income target:** $90,000–105,000 base salary at entry in the NYC metro area (Jersey City/Hoboken). Financial services employers in Jersey City are the primary target sector due to above-market IT/security compensation and proximity.
-
-**Remote work:** A long-term goal, not an entry requirement. The realistic path is hybrid (2–3 days in office) at entry, transitioning to fully remote within 12–18 months either internally or via a move to a remote-first employer. Remote becomes particularly important as a planned relocation out of the NYC metro area within the next 5+ years makes geographic flexibility valuable. Cloud and security operations roles are the natural path to remote work earliest.
 
 ---
 
@@ -380,4 +376,5 @@ Each completed objective also gets a documentation entry covering: Problem, Envi
 
 - **v2 (2026-06-28):** Consolidated Modules 1–6 as canonical; corrected hardware; formalized repo/artifact structure.
 - **v3 (2026-06-29):** Renamed all instances of "Tier" to "Module" throughout. Expanded curriculum from 6 to 11 modules adding Windows/AD, Automation, Containers, Cloud (AWS + Azure), Security Operations, and a full integrated Capstone. Updated hardware plan to include dedicated Proxmox host at Module 5. Added network segmentation (pfSense/OPNsense) as a Module 5 objective. Pre-lab knowledge check formalized as standard practice. Module 1 marked complete.
-- **v4 (2026-06-29):** Updated Mission to reflect that fall 2027 is a planning goal not a deadline; current employment continues until an actual offer is accepted. Added income target ($90,000–105,000 base, NYC metro, financial services primary sector). Clarified remote work as a long-term goal tied to planned relocation, not an entry requirement. Added Parallel Certification Track section covering Security+, AWS Cloud Practitioner, AWS SAA-C03, and optional additions.
+- **v4 (2026-06-29):** Updated Mission to reflect that fall 2027 is a planning goal not a deadline; current employment continues until an actual offer is accepted. Added specific compensation and remote-work planning targets (later removed from the public version in v5 — see below). Added Parallel Certification Track section covering Security+, AWS Cloud Practitioner, AWS SAA-C03, and optional additions.
+- **v5 (2026-07-05):** Removed income target, remote-work timeline, and target-sector details from the public Mission section (negotiating-leverage consideration ahead of GitHub visibility to recruiters). Mission section now covers only the core learning objective and timeline framing. Full detail retained in private planning notes outside this repo.

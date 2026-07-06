@@ -4,6 +4,8 @@ Transitioning from paramedic/EMS into IT systems administration and security thr
 
 This repo documents that process: real lab work, real session logs, real troubleshooting — turned into portfolio-quality documentation and resume material.
 
+Lab design and evaluation are structured with AI-assisted mentorship (pre-lab knowledge checks, scenario design, log review). All hands-on execution — VM configuration, command-line work, breaking and fixing real systems, troubleshooting — is performed independently.
+
 ## Standard
 
 All work governed by [`governing-document.md`](./governing-document.md). Current status tracked in [`PROGRESS.md`](./PROGRESS.md).
@@ -19,7 +21,7 @@ All work governed by [`governing-document.md`](./governing-document.md). Current
 |---|---|---|
 | 0 | Project Standards | ✅ Complete |
 | 1 | System Basics (Linux Foundations) | ✅ Complete |
-| 2 | System Troubleshooting | ⬜ Not Started |
+| 2 | System Troubleshooting | ✅ Complete |
 | 3 | System Administration | ⬜ Not Started |
 | 4 | Security Fundamentals | ⬜ Not Started |
 | 5 | Networked Systems | ⬜ Not Started |

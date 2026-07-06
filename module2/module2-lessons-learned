@@ -1,0 +1,27 @@
+# Module 2 Lessons Learned — System Troubleshooting
+
+## Core skills built
+
+- **Process management:** identifying processes by PID/owner/resource usage, and choosing the correct termination signal (graceful `kill` vs. forceful `kill -9`) based on process responsiveness.
+- **Service diagnosis:** distinguishing `inactive` from `failed` states, using built-in config validators (`nginx -t`) alongside `journalctl` to find root causes rather than guessing and restarting repeatedly.
+- **Network triage:** a repeatable three-step ladder (ping IP → ping hostname → `dig`/`nslookup`) that reliably isolates DNS failures from routing/connectivity failures in under a minute.
+- **Log-based diagnosis:** recognizing that service status output can be misleading, and that logs are sometimes the only reliable source of truth for whether a system is actually functioning versus merely reporting healthy.
+
+## General troubleshooting principles reinforced
+
+1. **Verify, don't assume.** Multiple points this module involved a plausible hypothesis that turned out to be wrong on direct inspection (e.g., assuming a symlink had been destroyed when it hadn't). Checking directly, even when a fix already seems to be working, produces a correct mental model — not just a working outcome.
+2. **Match the fix to the actual failure mode.** A restart and a resume can produce the same visible outcome (service "back up") while doing fundamentally different things underneath. Matching the fix precisely to the diagnosis — not just to "does it look fixed" — is the difference between real understanding and pattern-matching a solution.
+3. **Reported errors point to where a problem was detected, not necessarily where it originated.** True for config parsers (nginx) and worth carrying forward as a general debugging habit.
+4. **Status doesn't equal function.** Whether it's a service reporting `active` while serving nothing, or a process reporting `running` while completely frozen, verification needs to test actual behavior, not just report state.
+5. **Know when to stop chasing a root cause.** The Session 1 VM freeze was documented and closed once available evidence was exhausted, rather than pursued indefinitely on speculation. Recognizing that boundary is itself a professional troubleshooting skill.
+
+## Self-corrections made during this module
+
+- Corrected an initial (wrong) prediction that `tee` would have destroyed the `/etc/resolv.conf` symlink — direct inspection with `ls -l` showed otherwise, and the model was updated accordingly before proceeding.
+- Recognized that a `systemctl restart` "fix" for a frozen process, while functionally resolving the immediate symptom, did not match the actual diagnosis (a stopped, not crashed, process) — and re-ran the scenario specifically to apply the mechanically correct fix (`kill -CONT`).
+- Independently re-broke and re-fixed the DNS scenario a second time, unprompted, specifically to confirm the original fix was genuinely correct rather than coincidental.
+
+## Carried forward from Module 1
+
+- The chmod/chown and ACL-traversal model from Module 1 continues to underpin permission-related reasoning and will apply directly once Module 3 introduces policy-based access control.
+- Continued use of `journalctl` throughout Module 2 builds directly on the shell environment and basic diagnostic habits established in Module 1.

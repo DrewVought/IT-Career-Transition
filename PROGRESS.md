@@ -3,7 +3,7 @@
 Single-glance status tracker. Update immediately after any objective is scored.
 Statuses: ⬜ Not Started · 🟡 In Progress · 🟨 Needs Reinforcement · ✅ Complete
 
-Last updated: 2026-06-29
+Last updated: 2026-07-05 (Module 2 complete)
 
 ---
 
@@ -25,18 +25,21 @@ Last updated: 2026-06-29
 | 1.1 Navigation & Filesystem | ✅ Complete | Absolute and relative paths demonstrated organically during 1.2 work. `pwd` used as genuine diagnostic step. |
 | 1.2 Users, Groups, Permissions | ✅ Complete | ACL traversal issue independently diagnosed and resolved. `chmod`/`chown` demonstrated on `No_Grunts`. Grunt denied-access root cause correctly identified. Full break→diagnose→fix→verify loop completed. |
 | 1.3 Shell Environment | ✅ Complete | `env`/`printenv` reviewed. `.bashrc` edited via `nano`, sourced, effect proven live. Learner independently observed "stale until sourced" behavior. |
-| 1.4 Basic Networking Awareness | ✅ Complete | `ip a`, `ip route`, `ping -c 4 google.com` logged. Gateway (`10.0.2.2`), VM address (`10.0.2.15`), Tailscale overlay (`100.90.37.50`) correctly identified. DNS resolution step explained correctly. |
+| 1.4 Basic Networking Awareness | ✅ Complete | `ip a`, `ip route`, `ping -c 4 google.com` logged. Gateway (`<GATEWAY_IP>`), VM address (`<VM_IP>`), Tailscale overlay (`<TAILSCALE_IP>`) correctly identified. DNS resolution step explained correctly. |
 
 ---
 
 ## Module 2 — System Troubleshooting
+**Status: ✅ COMPLETE — 2026-07-05**
 
-| Objective | Status |
-|---|---|
-| 2.1 Process Management | ⬜ Not Started |
-| 2.2 Services | ⬜ Not Started |
-| 2.3 Networking Troubleshooting | ⬜ Not Started |
-| 2.4 Log Analysis | ⬜ Not Started |
+| Objective | Status | Notes |
+|---|---|---|
+| 2.1 Process Management | ✅ Complete | `ps aux`/`top` used to identify a runaway `yes` process, ownership confirmed. Both plain `kill` (clean `Terminated`) and `kill -9` (`Killed`) demonstrated, each verified via follow-up `ps aux | grep`. Session 1 included a genuine unplanned VM freeze/power-cycle incident (root cause inconclusive — ruled out resource exhaustion from `yes` itself; desktop/GUI froze after starting a second instance) that was independently recovered from and logged as evidence in its own right. |
+| 2.2 Services | ✅ Complete | Fresh nginx install, confirmed healthy (`active (running)`, `curl localhost`). Deliberately broke config (removed semicolon from `worker_connections` line). Diagnosed via `nginx -t` (which flagged the wrong line — the closing brace — requiring backward reasoning to the real fault) and cross-checked against `systemctl status`/`journalctl -u nginx`. Fixed root cause, verified via both `systemctl status` (service-level) and `curl localhost` (functional-level). |
+| 2.3 Networking Troubleshooting | ✅ Complete | Corrupted `/etc/resolv.conf` via the symlinked path (initial attempt had a genuine typo — `namesaver` instead of `nameserver` — compounding the invalid IP). Full diagnostic ladder run correctly: `ping` to a known IP (routing confirmed healthy) → `ping` to hostname (DNS-specific failure confirmed) → `dig`/`nslookup` (connection refused, isolating the resolver). Traced root cause through the `/etc/resolv.conf` → `systemd-resolved` symlink relationship rather than assuming symlink breakage. Fixed via `systemctl restart systemd-resolved` (correct mechanism — regenerates the managed file rather than hand-editing it). Self-verified by deliberately re-breaking and re-fixing independently. |
+| 2.4 Log Analysis | ✅ Complete | Custom `widget.service` built and confirmed healthy via heartbeat logging. Cold diagnosis scenario: process frozen via `kill -STOP` with no live observation — `systemctl status` showed a false-healthy `active (running)` while `journalctl` was the only evidence revealing heartbeats had actually stopped. Correctly identified `T` (stopped) process state via `ps aux`. Initial fix (`systemctl restart`) recognized as functionally different from the correct fix; re-ran the scenario and applied `kill -CONT` correctly (including recovering from an `Operation not permitted` error by adding `sudo`), resuming the original process without restarting it. Verified recovery via resumed heartbeats in `journalctl`. |
+
+**Module 2 complete — multi-layer diagnosis, log-based root-causing, and independent troubleshooting all demonstrated across the four objectives, satisfying the module's completion bar.**
 
 ---
 
@@ -157,4 +160,4 @@ Runs alongside modules — not sequential, not prerequisites. Tracked separately
 | 11.5 Access Control Across Environment | ⬜ Not Started |
 | 11.6 Monitoring & Logging | ⬜ Not Started |
 | 11.7 Security Hardening & Documentation | ⬜ Not Started |
-| 11.8 Independent Failure Recovery | ⬜ Not Started |
+| 11.8 Independent Failure Recovery | ⬜ Not Started |tarted |
